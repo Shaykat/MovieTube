@@ -1,7 +1,7 @@
 import datetime
 from django.db import models
 from django.utils import timezone
-from import_export import resources
+# from import_export import resources
 
 
 class Country(models.Model):
