@@ -3,8 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
-from import_export import resources
-import PIL
+
 
 CONTENT_TYPES = (
     ('song', 'Song'),
@@ -47,7 +46,7 @@ class VideoInfo(models.Model):
     categories = models.ManyToManyField(VideoCategory)
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     allow_comments = models.BooleanField(default=False)
-    cover_img = models.ImageField('Cover Image', upload_to="", null=True)
+    # cover_img = models.ImageField('Cover Image', upload_to="", null=True)
 
     # TODO:
     #  In future we may want to allow for more control over publication
