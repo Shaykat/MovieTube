@@ -5,8 +5,8 @@
     <div id="table-container" style="overflow:auto;">
         {% if video_list %}
             {% for img in video_list %}
-{#                <img src="{{img}}" alt="Smiley face" height="42" width="42">#}
-{#                <img src="{{img.cover_img.url}}" alt="Smiley face" height="42" width="42">#}
+<!--{#                <img src="{{img}}" alt="Smiley face" height="42" width="42">#}-->
+<!--{#                <img src="{{img.cover_img.url}}" alt="Smiley face" height="42" width="42">#}-->
                 <br><br>
                     <video width='400' controls>
                         <source src='{{ img.videofile.url }}' type='video/mp4'>
