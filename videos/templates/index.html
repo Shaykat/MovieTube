@@ -1,80 +1,21 @@
-<html>
-<head>
+{% extends 'base.html' %}
+{% load static %}
 
-    {% load static %}
-    <title>Homepage</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'videos/css/style.css' %}">
-</head>
-
-<body>
-
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
-
-<!-- Search form -->
-
-<div class = "header">
-    <div class="navOpener" style="flex-basis:30%;text-align:left">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+{% block Main_Body %}
+    <div id="table-container" style="overflow:auto;">
+        {% if video_list %}
+            {% for img in video_list %}
+{#                <img src="{{img}}" alt="Smiley face" height="42" width="42">#}
+{#                <img src="{{img.cover_img.url}}" alt="Smiley face" height="42" width="42">#}
+                <br><br>
+                    <video width='400' controls>
+                        <source src='{{ img.videofile.url }}' type='video/mp4'>
+                        Your browser does not support the video tag.
+                    </video>
+                <br><br>
+            {% endfor %}
+        {% else %}
+            <p>No images are available.</p>
+        {% endif %}
     </div>
-
-   <div class="header-left" style="flex-basis:40%;">
-        <form class="example" action="action_page.php" style="margin: 0 auto;width:100%;">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-   </div>
-
-    <div class = "header-right" style="flex-basis:30%;text-align:right">
-        <h1 style = "font-family: 'Poppins', sans-serif;font-weight:700"><img src="{% static 'videos/images/logo.png' %}" alt="Smiley face" height="42" width="42"> MovieTube</h1>
-
-    </div>
-
-</div>
-
-
-
-
-
-
-        <script>
-            function openNav() {
-              document.getElementById("mySidenav").style.width = "250px";
-            }
-
-            function closeNav() {
-              document.getElementById("mySidenav").style.width = "0";
-            }
-        </script>
-
-<!--        <video width="320" height="240" controls>-->
-<!--          <source src="video/sample.mp4" type="video/mp4">-->
-<!--          Your browser does not support the video tag.-->
-<!--        </video>-->
-
-<!--    <script type="text/javascript">-->
-<!--        function button_goto_playercomparison(){-->
-<!--            window.open("player_comparison.html");-->
-<!--        }-->
-<!--        function button_goto_playerSearch(){-->
-<!--            window.open("player_search.html");-->
-<!--        }-->
-<!--    </script>-->
-
-    <script type="text/javascript" src="charts.js"></script>
-    <!--Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock %}
