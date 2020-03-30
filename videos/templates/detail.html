@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block Main_Body %}
+    <div id="table-container" style="overflow:auto;">
+        {% if video %}
+            <video width='400' controls>
+                <source src='{{ video.videofile.url }}' type='video/mp4'>
+                Your browser does not support the video tag.
+            </video>
+        {% else %}
+            <p>No Video is available.</p>
+        {% endif %}
+    </div>
+{% endblock %}
