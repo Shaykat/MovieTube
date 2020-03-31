@@ -2,17 +2,27 @@
 {% load static %}
 
 {% block Main_Body %}
-    <div id="table-container" style="overflow:auto;">
+    <div class="video-wrapper">
         {% if video_list %}
-            {% for img in video_list %}
-{#                <img src="{{img}}" alt="Smiley face" height="42" width="42">#}
-{#                <img src="{{img.cover_img.url}}" alt="Smiley face" height="42" width="42">#}
-                <br><br>
-                    <video width='400' controls>
-                        <source src='{{ img.videofile.url }}' type='video/mp4'>
-                        Your browser does not support the video tag.
-                    </video>
-                <br><br>
+            {% for video in video_list %}
+                <div class="video-block">
+                    <a href="/videos/{{ video.id }}/">
+                        <div class="video">
+                            <div class="overlay">
+                                <img src="/static/videos/images/play-button.png" alt="" width="50px">
+                            </div>
+                            <video width='100%' >
+                                <source src='{{ video.videofile.url }}' type='video/mp4'>
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </a>
+                    <div class="caption">
+                        <h2>{{ video.name }}</h2>
+                        <p>Date of upload</p>
+                    </div>
+                </div>
             {% endfor %}
         {% else %}
             <p>No images are available.</p>

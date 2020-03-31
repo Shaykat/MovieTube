@@ -4,7 +4,7 @@
     {% load static %}
     <title>Homepage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'videos/css/style.css' %}">
@@ -34,28 +34,42 @@
        </div>
 
         <div class = "header-right" style="flex-basis:30%;text-align:right">
-            <h1 style = "font-family: 'Poppins', sans-serif;font-weight:700"><img src="{% static 'videos/images/logo.png' %}" alt="Smiley face" height="42" width="42"> MovieTube</h1>
+            <h1 style = "font-family: 'Poppins', sans-serif;font-weight:700;font-size:25px"><img src="{% static 'videos/images/logo.png' %}" alt="Smiley face" height="42" width="42"> MovieTube</h1>
 
         </div>
 
     </div>
-
+    <div class="main-body">
     {% block Main_Body %}
     {% endblock Main_Body %}
+    </div>
 
-
-    <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-        }
+<!--    <script>-->
+<!--        function openNav() {-->
+<!--          document.getElementById("mySidenav").style.width = "250px";-->
+<!--    </script>-->
+        <script>
+            function openNav() {
+              $("#mySidenav").css({
+                    "left":"0px"
+              });
+              $(".main-body").css({
+                    "left":"250px"
+              });
+            }
 
         function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
+          $("#mySidenav").css({
+                "left":"-250px"
+          });
+          $(".main-body").css({
+                "left":"0px"
+          });
         }
+
     </script>
 
-
-    <script type="text/javascript" src="charts.js"></script>
+{#    <script type="text/javascript" src="charts.js"></script>#}
     <!--Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

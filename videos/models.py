@@ -29,6 +29,9 @@ class VideoCategory(models.Model):
     def __unicode__(self):
         return "%s" % self.title
 
+    def __str__(self):
+        return self.title
+
     def slug(self):
         return slugify(self.title)
 
@@ -45,9 +48,12 @@ class VideoInfo(models.Model):
     content_type = models.CharField('Content Type', max_length=20, choices=CONTENT_TYPES, default='song')
     # content_path = models.SlugField(unique=True, help_text="A url friendly slug for the video clip.")
     categories = models.ManyToManyField(VideoCategory)
+    categories = models.ManyToManyField(VideoCategory)
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     allow_comments = models.BooleanField(default=False)
+    video_rating = models.FloatField('Video Rating')
     cover_img = models.ImageField('Cover Image', upload_to="", null=True)
+    class_name = models.IntegerField('Class Name')
 
     # TODO:
     #  In future we may want to allow for more control over publication
