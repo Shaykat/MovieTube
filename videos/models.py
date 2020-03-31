@@ -51,9 +51,9 @@ class VideoInfo(models.Model):
     categories = models.ManyToManyField(VideoCategory)
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     allow_comments = models.BooleanField(default=False)
-    video_rating = models.FloatField('Video Rating')
+    video_rating = models.FloatField('Video Rating', null=True)
     cover_img = models.ImageField('Cover Image', upload_to="", null=True)
-    class_name = models.IntegerField('Class Name')
+    class_name = models.IntegerField('Class Name', null=True)
 
     # TODO:
     #  In future we may want to allow for more control over publication
