@@ -90,6 +90,12 @@ class VideoInfo(models.Model):
         self.modified_date = datetime.now()
         if self.publish_date is None and self.is_public:
             self.publish_date = datetime.now()
+        w = .119609736
+        b = .21622217
+        if (w*self.video_rating) + b >= .65:
+            self.class_name = 1
+        else:
+            self.class_name = 0
         super(VideoInfo, self).save(*args, **kwargs)
         if self.videofile:
             var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=320:240', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/low/' + str(self.videofile)[7:]])
