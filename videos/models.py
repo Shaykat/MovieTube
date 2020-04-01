@@ -4,6 +4,8 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 from import_export import resources
+from django.core.validators import MaxValueValidator, MinValueValidator
+import subprocess
 import PIL
 
 CONTENT_TYPES = (
@@ -51,7 +53,7 @@ class VideoInfo(models.Model):
     categories = models.ManyToManyField(VideoCategory)
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     allow_comments = models.BooleanField(default=False)
-    video_rating = models.FloatField('Video Rating', null=True)
+    video_rating = models.FloatField('Video Rating', null=True, validators=[MinValueValidator(1.0), MaxValueValidator(5.0)])
     cover_img = models.ImageField('Cover Image', upload_to="", null=True)
     class_name = models.IntegerField('Class Name', null=True)
 
@@ -90,6 +92,8 @@ class VideoInfo(models.Model):
         if self.publish_date is None and self.is_public:
             self.publish_date = datetime.now()
         super(VideoInfo, self).save(*args, **kwargs)
+        if self.videofile:
+            var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=320:240', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/low/' + str(self.videofile)[7:]])
 
 
 # class HTML5Video(models.Model):
