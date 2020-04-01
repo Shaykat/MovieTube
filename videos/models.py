@@ -54,13 +54,17 @@ class VideoInfo(models.Model):
     allow_comments = models.BooleanField(default=False)
     video_rating = models.FloatField('Video Rating', null=True, validators=[MinValueValidator(1.0), MaxValueValidator(5.0)])
     cover_img = models.ImageField('Cover Image', upload_to="", null=True)
-    class_name = models.IntegerField('Class Name', null=True)
+    class_name = models.IntegerField('Class Name', null=True, default=0)
+    low_quality_url = models.CharField('Low Quality Video URL', null=True, blank=True, max_length=200)
+    medium_quality_url = models.CharField('Medium Quality Video URL', null=True, blank=True, max_length=200)
+    high_quality_url = models.CharField('High Quality Video URL', null=True, blank=True, max_length=200)
 
     # TODO:
     #  In future we may want to allow for more control over publication
     is_public = models.BooleanField(default=False)
     modified_date = models.DateTimeField(auto_now=True)
     publish_date = models.DateTimeField(null=True, blank=True)
+    view_count = models.IntegerField('View Count', null=True, default=0)
 
     def content_path(self):
         return slugify(self.name)
@@ -87,6 +91,7 @@ class VideoInfo(models.Model):
         })
 
     def save(self, *args, **kwargs):
+        cls = ""
         self.modified_date = datetime.now()
         if self.publish_date is None and self.is_public:
             self.publish_date = datetime.now()
@@ -94,11 +99,27 @@ class VideoInfo(models.Model):
         b = .21622217
         if (w*self.video_rating) + b >= .65:
             self.class_name = 1
+            cls = 'Hot'
         else:
             self.class_name = 0
+            cls = 'Cold'
+        self.low_quality_url = '/Users/mutalabshaykat/Documents/MM802/media/videos/' + cls + '/low/' + str(self.videofile)
+        self.medium_quality_url = '/Users/mutalabshaykat/Documents/MM802/media/videos/' + cls + '/medium/' + str(self.videofile)
+        self.high_quality_url = '/Users/mutalabshaykat/Documents/MM802/media/videos/' + cls + '/high/' + str(self.videofile)
         super(VideoInfo, self).save(*args, **kwargs)
         if self.videofile:
-            var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=320:240', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/low/' + str(self.videofile)[7:]])
+            if self.class_name == 1:
+                # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=360:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/low/' + str(self.videofile)[7:]])
+
+                var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=480:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/medium/' + str(self.videofile)[7:]])
+
+                # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=720:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/high/' + str(self.videofile)[7:]])
+            else:
+                # var = subprocess.call(['ffmpeg', '-i', 'Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=360:-1', 'Users/mutalabshaykat/Documents/MM802/media/videos/Cold/low/' + str(self.videofile)[7:]])
+
+                var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=480:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Cold/medium/' + str(self.videofile)[7:]])
+
+                # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=720:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Cold/high/' + str(self.videofile)[7:]])
 
 
 # class HTML5Video(models.Model):

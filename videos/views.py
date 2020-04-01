@@ -13,8 +13,15 @@ from .models import VideoInfo, VideoCategory
 def index(request):
     template = loader.get_template('./index.html')
     context_object_name = 'video_list'
+    search_query = ""
 
-    queryset = VideoInfo.objects.all().order_by('-publish_date')
+    if request.method == 'GET':
+        search_query = request.GET.get('search', "")
+
+    if search_query:
+        queryset = VideoInfo.objects.filter(name__icontains=search_query).order_by('-publish_date')
+    else:
+        queryset = VideoInfo.objects.all().order_by('-publish_date')
     context = {
         context_object_name: queryset
     }
