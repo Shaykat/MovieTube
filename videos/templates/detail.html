@@ -2,14 +2,74 @@
 {% load static %}
 
 {% block Main_Body %}
-    <div id="table-container" style="overflow:auto;">
-        {% if video %}
-            <video width='400' controls>
-                <source src='{{ video.videofile.url }}' type='video/mp4'>
-                Your browser does not support the video tag.
-            </video>
-        {% else %}
-            <p>No Video is available.</p>
-        {% endif %}
+
+    <div class="video-single-wrapper">
+        <div class="video-play">
+            <div class="video-box">
+                {% if video %}
+                    <video width='600' controls>
+                        <source src='{{ video.videofile.url }}' type='video/mp4'>
+                        Your browser does not support the video tag.
+                    </video>
+                {% else %}
+                    <p>No Video is available.</p>
+                {% endif %}
+            </div>
+            <div class="video-caption">
+                <h2>The title of the video</h2>
+                <p>Date of upload</p>
+            </div>
+        </div>
     </div>
-{% endblock %}
+
+    <div class="list-wrapper">
+        <h2>Recent Videos</h2>
+        <div class="video-list">
+                <div class="list">
+                    <video width='600' controls>
+                        <source src='/media/videos/Badshah_-_Genda_Phool_-_JacquelineFernandez_-_Payal_Dev_-_Official_Music_Video_2020.mp4' type='video/mp4'>
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-caption">
+                        <h2>The title of the video</h2>
+                        <p>Date of upload</p>
+                    </div>
+                </div>
+                <div class="list">
+                    <video width='600' controls>
+                        <source src='/media/videos/Badshah_-_Genda_Phool_-_JacquelineFernandez_-_Payal_Dev_-_Official_Music_Video_2020.mp4' type='video/mp4'>
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-caption">
+                        <h2>The title of the video</h2>
+                        <p>Date of upload</p>
+                    </div>
+                </div>
+                <div class="list">
+                    <video width='600' controls>
+                        <source src='/media/videos/Badshah_-_Genda_Phool_-_JacquelineFernandez_-_Payal_Dev_-_Official_Music_Video_2020.mp4' type='video/mp4'>
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-caption">
+                        <h2>The title of the video</h2>
+                        <p>Date of upload</p>
+                    </div>
+                </div>
+                <div class="list">
+                    <video width='600' controls>
+                        <source src='/media/videos/Badshah_-_Genda_Phool_-_JacquelineFernandez_-_Payal_Dev_-_Official_Music_Video_2020.mp4' type='video/mp4'>
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-caption">
+                        <h2>The title of the video</h2>
+                        <p>Date of upload</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    {% endblock %}
+
+   </div>
+
+

@@ -57,7 +57,7 @@
 
 
 
-    <div class="video-wrapper">
+    <div class="video-wrapper" style="overflow: scroll; height: 600px;">
 
         {% if video_list %}
             {% for video in video_list %}
@@ -76,8 +76,8 @@
                             </video>
                         </div>
                         <div class="video-caption">
-                            <h2>The title of the video</h2>
-                            <p>Date of upload</p>
+                            <h2>{{ video.name }}</h2>
+                            <p>{{ video.upload_date }}</p>
                         </div>
                     </a>
                 </div>

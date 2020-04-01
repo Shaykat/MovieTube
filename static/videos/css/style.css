@@ -1,7 +1,6 @@
 body{
     background:#FFFFF !important;
     font-family: 'Poppins', sans-serif;
-    overflow:hidden
 }
 
 a {
@@ -103,9 +102,10 @@ form.example::after {
   display: flex;
    justify-content: space-between;
    box-sizing:border-box;
-   padding:15px 50px 5px;
+   padding:10px 50px;
    border-bottom: 1px solid #eaeaea;
    box-shadow:0px 5px 21px #e8e8e8;
+   align-items:center;
 
 }
 
@@ -244,65 +244,39 @@ form.example::after {
     height: 100% !important;
 }
 
-
-.video-wrapper{
+.video-single-wrapper{
     display: flex;
-    padding:50px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
+    padding:50px 100px;
 }
-.video-block{
-    flex-basis: 31%;
-    margin: 5px 15px;
+
+.video-play{
+    flex-basis:100%;
 }
-.video-block .video{
+.video-box{
     width: 100%;
-    height: 245px;
-    position:relative;
-    cursor:pointer
 }
-.video-block .video video{
-    width:100%;
-    height:100%;
-
-}
-.video-block .video .overlay{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background:transparent;
-    transition:all .3s linear;
-    opacity:0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.video-block .video:hover .overlay{
-    opacity:1;
-}
-.video-block .video:hover .overlay img{
-    width:50px;
-}
-.video-block .caption{
+.video-play .video-caption{
     margin-top:20px;
-    text-align:left
 }
-.video-block .caption h2{
-    font-size:16px;
-    font-weight:600;
-    color:#000;
+.video-play .video-caption h2{
+    font-size:22px;
 }
-.video-block .caption p{
-    font-size: 13px;
-    font-weight: normal;
-    color: #000;
-    opacity: 0.7;
-    margin-top: -2px;
+.video-box video{
+    width:100%;
 
 }
+
+.list-wrapper{
+    padding:0px 100px 100px;
+}
+.video-list{
+    display:flex;
+    flex-direction:row;
+
+}
+
 
 .dropbtn {
   background-color: #07afc0;
@@ -343,6 +317,89 @@ form.example::after {
 
 .dropdown:hover .dropbtn {
   background-color: #0b7dda;
+}
+
+
+
+
+.header-right a{
+    color:#07afc0;
+}
+.header-right a:hover{
+    text-decoration:none;
+    color:#0b7dda;
+}
+.video-list .list{
+    width:25%;
+    margin:20px 10px;
+}
+.video-list .video-caption{
+    margin-top:0px;
+    border-bottom:1px solid #ddd;
+    padding-bottom:0px;
+    margin-bottom:15px;
+}
+.video-list .list video{
+    width:100%;
+    margin:10px 0;
+}
+.video-wrapper{
+    display: flex;
+    padding:50px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.video-block{
+    flex-basis: 31%;
+    margin: 5px 16px;
+}
+.video-block .video{
+    width: 100%;
+    height: 245px;
+    position:relative;
+    cursor:pointer
+}
+.video-block .video video{
+    width:100%;
+    height:100%;
+
+}
+.video-block .video .overlay{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:transparent;
+    transition:all .3s linear;
+    opacity:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-block .video:hover .overlay{
+    opacity:1;
+}
+.video-block .video:hover .overlay img{
+    width:50px;
+}
+.video-caption{
+    margin-top:20px;
+    text-align:left
+}
+.video-caption h2{
+    font-size:16px;
+    font-weight:600;
+    color:#000;
+}
+.video-caption p{
+    font-size: 13px;
+    font-weight: normal;
+    color: #000;
+    opacity: 0.7;
+    margin-top: -2px;
+
 }
 
 .main-body{
