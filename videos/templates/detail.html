@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block Main_Body %}
-
     <div class="video-single-wrapper">
         <div class="video-play">
             <div class="video-box">
@@ -27,51 +26,25 @@
     <div class="list-wrapper">
         <h2 style = "font-family: 'Poppins', sans-serif;font-weight:700;font-size:25px">Watch More</h2>
         <div class="video-list">
-                <div class="list">
-                    <video width='600' controls>
-                        <source src='/media/videos/2.mp4' type='video/mp4'>
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-caption">
-                        <h2>{{ video.name }}</h2>
-                        <p>{{ video.upload_date }}</p>
+            {% if video_list %}
+                {% for video in video_list %}
+                    <div class="list">
+                        <a href = "/videos/{{video.id}}/">
+                            <video width='600' controls>
+                                <source src='{{ video.videofile.url }}' type='video/mp4'>
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="video-caption">
+                                <h2>{{ video.name }}</h2>
+                                <p>{{ video.upload_date }}</p>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="list">
-                    <video width='600' controls>
-                        <source src='/media/videos/1_mdxkm06.mp4' type='video/mp4'>
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-caption">
-                        <h2>{{ video.name }}</h2>
-                        <p>{{ video.upload_date }}</p>
-                    </div>
-                </div>
-                <div class="list">
-                    <video width='600' controls>
-                        <source src='/media/videos/2_s8qdlJb.mp4' type='video/mp4'>
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-caption">
-                        <h2>{{ video.name }}</h2>
-                        <p>{{ video.upload_date }}</p>
-                    </div>
-                </div>
-                <div class="list">
-                    <video width='600' controls>
-                        <source src='/media/videos/3_FiuGBf1.mp4' type='video/mp4'>
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-caption">
-                        <h2>{{ video.name }}</h2>
-                        <p>{{ video.upload_date }}</p>
-                    </div>
-                </div>
-            </div>
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
+{% endblock %}
 
-    {% endblock %}
-
-   </div>
 
 

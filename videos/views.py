@@ -28,8 +28,10 @@ def detail(request, pk):
     context_object_name = 'video'
 
     video = VideoInfo.objects.get(id=pk)
+    video_list = VideoInfo.objects.filter(content_type=video.content_type).order_by('-publish_date')
     context = {
-        context_object_name: video
+        context_object_name: video,
+        'video_list': video_list,
     }
 
     return render(request, template, context)

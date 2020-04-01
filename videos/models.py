@@ -50,7 +50,6 @@ class VideoInfo(models.Model):
     content_type = models.CharField('Content Type', max_length=20, choices=CONTENT_TYPES, default='song')
     # content_path = models.SlugField(unique=True, help_text="A url friendly slug for the video clip.")
     categories = models.ManyToManyField(VideoCategory)
-    categories = models.ManyToManyField(VideoCategory)
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     allow_comments = models.BooleanField(default=False)
     video_rating = models.FloatField('Video Rating', null=True, validators=[MinValueValidator(1.0), MaxValueValidator(5.0)])
