@@ -57,7 +57,7 @@ ROOT_URLCONF = 'movieTube.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,6 +87,7 @@ WSGI_APPLICATION = 'movieTube.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'moviedb',
         'NAME': 'postgres',
         'USER': 'mutalabshaykat',
         'PASSWORD': '5423',
@@ -127,6 +128,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
 
 
 # Static files (CSS, JavaScript, Images)

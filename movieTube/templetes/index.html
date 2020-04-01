@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block Main_Body %}
+
+    <div id="myModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content" style = "display: flex; align-items: center; justify-content: center;">
+                <div class="modal-header" style ="">
+                    <h4 class="modal-title">Welcome to MovieTube</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -10px;font-size: 25px;">&times;</button>
+                </div>
+                <div class="modal-body" style = "display: flex; align-items: center; justify-content: center;">
+                    <form method="post" action="">
+                        <p>Select Device</p>
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <button class="dropbtn">Select</button>
+                                <div class="dropdown-content">
+                                    <a href="#"><img src = "https://cdn0.iconfinder.com/data/icons/phone-36/32/Mobile-phone-smartphone-telephone-01-512.png" height="30" width="30"></img> Mobile</a>
+                                    <a href="#"><img src = "https://image.flaticon.com/icons/svg/0/319.svg" height="30" width="30"> Tablet</a>
+                                    <a href="#"><img src = "https://icons-for-free.com/iconfiles/png/512/desktop+laptop+mac+monitor+pc+screen+icon-1320084900181856200.png" height="30" width="30"> PC/Desktop</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p>Select Resolution</p>
+                            <div class="dropdown">
+                                <button class="dropbtn">Select</button>
+                                <div class="dropdown-content">
+                                    <a href="#">240p</a>
+                                    <a href="#">360p</a>
+                                    <a href="#">720p</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                    {% csrf_token %}-->
+                        <!--                    {{ form.as_p }}-->
+                        <!--                    <label for="device">Device Name: </label>-->
+                        <!--                    <input id="device" type="text" name="device" maxlength="100" required placeholder = "Mobile / Tablet / PC">-->
+
+                        <!--                    <p>-->
+                        <!--                        <label for="resolution">Resolution: </label>-->
+                        <!--                        <input id="resolution" type="text" name="resolution" maxlength="100" required placeholder = "240p / 360p / 720p" style="margin-top: 10;">-->
+
+                        <!--                    </p>-->
+
+                        <button type="submit" class="dropbtn" style = "float: right;">Okay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="video-wrapper" style="overflow: scroll; height: 600px;">
+
+        {% if video_list %}
+            {% for video in video_list %}
+                <!--{#                <img src="{{img}}" alt="Smiley face" height="42" width="42">#}-->
+                <!--{#                <img src="{{img.cover_img.url}}" alt="Smiley face" height="42" width="42">#}-->
+                <div class="video-block">
+
+                    <a href = "/videos/{{video.id}}/">
+                        <div class="video">
+                            <div class="overlay" >
+                                <img src="/static/videos/images/play-button.png" alt="" width="50px" height="50px">
+                            </div>
+                            <video width='100%' >
+                                <source src='{{ video.videofile.url }}' type='video/mp4'>
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <h2>{{ video.name }}</h2>
+                            <p>{{ video.upload_date }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No images are available.</p>
+        {% endif %}
+
+    </div>
+{% endblock %}
