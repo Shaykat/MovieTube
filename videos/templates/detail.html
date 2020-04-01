@@ -16,53 +16,55 @@
                 {% endif %}
             </div>
             <div class="video-caption">
-                <h2>The title of the video</h2>
-                <p>Date of upload</p>
+                <h2>{{ video.name }}</h2>
+                <p><i>Description: {{ video.description }}</i></p>
+                <p>{{ video.upload_date }}</p>
+
             </div>
         </div>
     </div>
 
     <div class="list-wrapper">
-        <h2>Recent Videos</h2>
+        <h2 style = "font-family: 'Poppins', sans-serif;font-weight:700;font-size:25px">Watch More</h2>
         <div class="video-list">
                 <div class="list">
                     <video width='600' controls>
-                        <source src='/media/videos/Badshah_-_Genda_Phool_-_JacquelineFernandez_-_Payal_Dev_-_Official_Music_Video_2020.mp4' type='video/mp4'>
+                        <source src='/media/videos/2.mp4' type='video/mp4'>
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-caption">
-                        <h2>The title of the video</h2>
-                        <p>Date of upload</p>
+                        <h2>{{ video.name }}</h2>
+                        <p>{{ video.upload_date }}</p>
                     </div>
                 </div>
                 <div class="list">
                     <video width='600' controls>
-                        <source src='/media/videos/Badshah_-_Genda_Phool_-_JacquelineFernandez_-_Payal_Dev_-_Official_Music_Video_2020.mp4' type='video/mp4'>
+                        <source src='/media/videos/1_mdxkm06.mp4' type='video/mp4'>
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-caption">
-                        <h2>The title of the video</h2>
-                        <p>Date of upload</p>
+                        <h2>{{ video.name }}</h2>
+                        <p>{{ video.upload_date }}</p>
                     </div>
                 </div>
                 <div class="list">
                     <video width='600' controls>
-                        <source src='/media/videos/Badshah_-_Genda_Phool_-_JacquelineFernandez_-_Payal_Dev_-_Official_Music_Video_2020.mp4' type='video/mp4'>
+                        <source src='/media/videos/2_s8qdlJb.mp4' type='video/mp4'>
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-caption">
-                        <h2>The title of the video</h2>
-                        <p>Date of upload</p>
+                        <h2>{{ video.name }}</h2>
+                        <p>{{ video.upload_date }}</p>
                     </div>
                 </div>
                 <div class="list">
                     <video width='600' controls>
-                        <source src='/media/videos/Badshah_-_Genda_Phool_-_JacquelineFernandez_-_Payal_Dev_-_Official_Music_Video_2020.mp4' type='video/mp4'>
+                        <source src='/media/videos/3_FiuGBf1.mp4' type='video/mp4'>
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-caption">
-                        <h2>The title of the video</h2>
-                        <p>Date of upload</p>
+                        <h2>{{ video.name }}</h2>
+                        <p>{{ video.upload_date }}</p>
                     </div>
                 </div>
             </div>

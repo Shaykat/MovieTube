@@ -351,7 +351,7 @@ form.example::after {
     align-items: flex-start;
 }
 .video-block{
-    flex-basis: 31%;
+    flex-basis: 30%;
     margin: 5px 16px;
 }
 .video-block .video{
