@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from django.views import generic
+from .forms import SurveyForm
 from .models import VideoInfo
 import os
 
@@ -33,3 +33,21 @@ def detail(request, pk):
     }
 
     return render(request, template, context)
+
+
+def survey(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SurveyForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            request.session['device'] = form.data['device_type']
+            request.session['quality'] = form.data['quality']
+            return HttpResponseRedirect('/videos/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = SurveyForm()
+
+    return render(request, 'survey.html', {'form': form})
