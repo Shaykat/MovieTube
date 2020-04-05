@@ -30,7 +30,7 @@ a {
   transition: 0.3s;
 }
 
-.sidenav a:hover {
+.sidenav .nav-list a:hover {
   padding:10px 10px 10px 30px;
 }
 
@@ -93,20 +93,19 @@ form.example::after {
 
 
 .header {
-  background-color: #fff;
-  padding: 30px;
-  text-align: right;
-  font-size: 40px;
-  color: 222447;;
-  font-family: 'Poppins', sans-serif;font-weight:700;
-  display: flex;
-   justify-content: space-between;
-   box-sizing:border-box;
-   padding:10px 50px;
-   border-bottom: 1px solid #eaeaea;
-   box-shadow:0px 5px 21px #e8e8e8;
-   align-items:center;
-
+    background-color: #fff;
+    padding: 30px;
+    text-align: right;
+    font-size: 40px;
+    color: #222447;
+    font-family: 'Poppins', sans-serif;font-weight:700;
+    display: flex;
+    justify-content: space-between;
+    box-sizing:border-box;
+    padding:10px 50px;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow:0px 5px 21px #e8e8e8;
+    align-items:center;
 }
 
 .header-left {
@@ -274,7 +273,30 @@ form.example::after {
 .video-list{
     display:flex;
     flex-direction:row;
-
+    flex-wrap:wrap;
+    position:relative;
+}
+.video-list .single-video{
+    position:relative;
+}
+.video-list .single-video .overlay{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:transparent;
+    transition:all .3s linear;
+    opacity:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-list .single-video:hover .overlay{
+    opacity:1;
+}
+.video-list .single-video:hover .overlay img{
+    width:50px;
 }
 
 
@@ -330,7 +352,7 @@ form.example::after {
     color:#0b7dda;
 }
 .video-list .list{
-    width:25%;
+    width:23%;
     margin:20px 10px;
 }
 .video-list .video-caption{
@@ -351,8 +373,9 @@ form.example::after {
     align-items: flex-start;
 }
 .video-block{
-    flex-basis: 30%;
-    margin: 5px 16px;
+    flex-basis: 22%;
+    margin: -20px 16px;
+
 }
 .video-block .video{
     width: 100%;
@@ -363,6 +386,7 @@ form.example::after {
 .video-block .video video{
     width:100%;
     height:100%;
+    border-radius: 50px;
 
 }
 .video-block .video .overlay{
@@ -385,7 +409,8 @@ form.example::after {
     width:50px;
 }
 .video-caption{
-    margin-top:20px;
+    margin-top:-26px;
+    margin-bottom: 38px;
     text-align:left
 }
 .video-caption h2{
@@ -400,8 +425,35 @@ form.example::after {
     opacity: 0.7;
     margin-top: -2px;
 
+
 }
 
+.video-caption-index {
+    margin-top:-26px;
+    margin-bottom: 38px;
+    text-align:left
+}
+.video-caption-index  h2{
+    font-size:16px;
+    font-weight:600;
+    color:#000;
+}
+.video-caption-index  p{
+    font-size: 13px;
+    font-weight: normal;
+    color: #000;
+    opacity: 0.7;
+    margin-top: -2px;
+    display:inline-block;
+
+
+}
+
+.video-block a:hover{
+
+text-decoration:none;
+     cursor:pointer;
+}
 .main-body{
     position:relative;
     left:0;

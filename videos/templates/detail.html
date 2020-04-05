@@ -14,10 +14,10 @@
                     <p>No Video is available.</p>
                 {% endif %}
             </div>
-            <div class="video-caption">
-                <h2>{{ video.name }}</h2>
-                <p><i>Description: {{ video.videofile.name }}</i></p>
-                <p>{{ video.upload_date }}</p>
+            <div class="video-caption-index">
+                <h2 style="margin-top: 40px;">{{ video.name }}</h2>
+                <p><i>Description: {{ video.description }}</i></p>
+                <p style=" ">{{ video.upload_date }}<p style = "float: right;"><img src="https://static.thenounproject.com/png/304008-200.png" alt="" width="20px" height="20px"> {{video.view_count}}</p>
 
             </div>
         </div>
@@ -29,14 +29,22 @@
             {% if video_list %}
                 {% for video in video_list %}
                     <div class="list">
+
                         <a href = "/videos/{{video.id}}/">
-                            <video width='600' controls>
-                                <source src='{{ video.videofile.url }}' type='video/mp4'>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <h2>{{ video.name }}</h2>
-                                <p>{{ video.upload_date }}</p>
+
+                            <div class="single-video">
+                                <div class="overlay" >
+                                    <img src="/static/videos/images/play-vid.png" alt="" width="50px" height="50px">
+                                </div>
+                                <video width='100%' >
+                                    <source src='{{ video.videofile.url }}' type='video/mp4'>
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <div class="video-caption-index">
+                                <h2 style="margin-top: 30px;">{{ video.name }}</h2>
+                            <p style=" ">{{ video.upload_date }}<p style = "float: right;"><img src="https://static.thenounproject.com/png/304008-200.png" alt="" width="20px" height="20px"> {{video.view_count}}</p>
                             </div>
                         </a>
                     </div>

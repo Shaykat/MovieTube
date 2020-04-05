@@ -14,20 +14,35 @@
 <body>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/videos/survey">Preferences</a>
-    <a href="http://127.0.0.1:8000/videos/">All Videos</a>
-    <a href="">Categories
-        <ul style="list-style-type:none; margin-top: -50px; margin-bottom: -10px; font-size: 16px;">
-            <li><a href="#">Song</a></li>
-            <li><a href="#">Movie</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Tutorial</a></li>
-            <li><a href="#">Drama</a></li>
-            <li><a href="#">Sports</a></li>
+
+    <a href="http://127.0.0.1:8000/videos/"><h2
+            style="font-family: 'Poppins', sans-serif;font-weight:700;font-size:25px; color: black; margin-top: -50px; margin-bottom: 20px; transition: none !important;">
+        <img
+                src="{% static 'videos/images/logo.png' %}" alt="Smiley face" height="35" width="35"> MovieTube</h2></a>
+
+    <div class="nav-list">
+        <a href="/videos/survey"> <img
+            src="https://cdn2.iconfinder.com/data/icons/medical-healthcare-26/28/Preference-512.png" height="25"
+            width="25"> Preferences</a>
+    <a href="http://127.0.0.1:8000/videos/"><img
+            src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-512.png" height="23"
+            width="23"> All Videos</a>
+    <a href="" class="nav-cat" ><img src="https://static.thenounproject.com/png/861641-200.png" height="20" width="20" > Categories
+        <ul style="list-style-type:none; margin-top: -50px; margin-bottom: -10px; font-size: 16px;" class="nav-ul">
+            <li><a href="/videos/?cat=song">Song</a></li>
+            <li><a href="/videos/?cat=movie">Movie</a></li>
+            <li><a href="/videos/?cat=blog">Blog</a></li>
+            <li><a href="/videos/?cat=tutorial">Tutorial</a></li>
+            <li><a href="/videos/?cat=drama">Drama</a></li>
+            <li><a href="/videos/?cat=sports">Sports</a></li>
         </ul>
     </a>
-    <a href="/signup">Sign Up</a>
-    <a href="#">Contact</a>
+    <a href="/signup"><img src="https://static.thenounproject.com/png/736543-200.png" height="25" width="25"> Sign
+        Up</a>
+    <a href="#"><img
+            src="https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronUpCircle-512.png"
+            height="22" width="22"> Sign Out</a>
+    </div>
 </div>
 
 <!-- Search form -->
@@ -79,13 +94,19 @@
         });
     }
 
+
+
+
+
+
 </script>
 
 <div class="footer-copyright text-center py-3"
-     style="font-family: 'Poppins', sans-serif;font-weight:400;font-size:15px">© 2020 Copyright: Developed by <i>Shaykat/Tanzil </i>
+     style="font-family: 'Poppins', sans-serif;font-weight:400;font-size:15px; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #07AFC0; color: #fff">
+    © 2020 Copyright: Developed by <i>Shaykat/Tanzil </i>
 </div>
 
-{#    <script type="text/javascript" src="charts.js"></script>#}
+
 <!--Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

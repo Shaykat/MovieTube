@@ -37,17 +37,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!--                    {% csrf_token %}-->
-                        <!--                    {{ form.as_p }}-->
-                        <!--                    <label for="device">Device Name: </label>-->
-                        <!--                    <input id="device" type="text" name="device" maxlength="100" required placeholder = "Mobile / Tablet / PC">-->
-
-                        <!--                    <p>-->
-                        <!--                        <label for="resolution">Resolution: </label>-->
-                        <!--                        <input id="resolution" type="text" name="resolution" maxlength="100" required placeholder = "240p / 360p / 720p" style="margin-top: 10;">-->
-
-                        <!--                    </p>-->
-
                         <button type="submit" class="dropbtn" style = "float: right;">Okay</button>
                     </form>
                 </div>
@@ -57,7 +46,7 @@
 
 
 
-    <div class="video-wrapper" style="overflow: scroll; height: 600px;">
+    <div class="video-wrapper" >
 
         {% if video_list %}
             {% for video in video_list %}
@@ -68,16 +57,16 @@
                     <a href = "/videos/{{video.id}}/">
                         <div class="video">
                             <div class="overlay" >
-                                <img src="/static/videos/images/play-button.png" alt="" width="50px" height="50px">
+                                <img src="/static/videos/images/play-vid.png" alt="" width="50px" height="50px">
                             </div>
                             <video width='100%' >
                                 <source src='{{ video.videofile.url }}' type='video/mp4'>
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <div class="video-caption">
+                        <div class="video-caption-index">
                             <h2>{{ video.name }}</h2>
-                            <p>{{ video.upload_date }}</p>
+                            <p style=" ">{{ video.upload_date }}<p style = "float: right;"><img src="https://static.thenounproject.com/png/304008-200.png" alt="" width="20px" height="20px"> {{video.view_count}}</p>
                         </div>
                     </a>
                 </div>

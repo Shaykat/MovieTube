@@ -14,12 +14,18 @@ def index(request):
     template = loader.get_template('./index.html')
     context_object_name = 'video_list'
     search_query = ""
+    cat_query = ""
 
     if request.method == 'GET':
-        search_query = request.GET.get('search', "")
+        if request.GET.get('search', ""):
+            search_query = request.GET.get('search', "")
+        else:
+            cat_query = request.GET.get('cat', "")
 
     if search_query:
         queryset = VideoInfo.objects.filter(name__icontains=search_query).order_by('-publish_date')
+    elif cat_query:
+        queryset = VideoInfo.objects.filter(content_type__contains=cat_query).order_by('-publish_date')
     else:
         queryset = VideoInfo.objects.all().order_by('-publish_date')
     context = {
@@ -35,6 +41,7 @@ def detail(request, pk):
     context_object_name = 'video'
 
     video = VideoInfo.objects.get(id=pk)
+    video.view_count += 1
     video_list = VideoInfo.objects.filter(content_type=video.content_type).order_by('-publish_date')
     context = {
         context_object_name: video,

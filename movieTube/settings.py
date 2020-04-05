@@ -87,8 +87,8 @@ WSGI_APPLICATION = 'movieTube.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'moviedb',
-        'NAME': 'postgres',
+        'NAME': 'moviedb',
+        # 'NAME': 'postgres',
         'USER': 'mutalabshaykat',
         'PASSWORD': '5423',
         'HOST': 'localhost',

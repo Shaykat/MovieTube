@@ -62,6 +62,7 @@ class VideoInfo(models.Model):
     # TODO:
     #  In future we may want to allow for more control over publication
     is_public = models.BooleanField(default=False)
+    is_encoded = models.BooleanField('Is Encoded', default=False)
     modified_date = models.DateTimeField(auto_now=True)
     publish_date = models.DateTimeField(null=True, blank=True)
     view_count = models.IntegerField('View Count', null=True, default=0)
@@ -108,18 +109,20 @@ class VideoInfo(models.Model):
         self.high_quality_url = '/Users/mutalabshaykat/Documents/MM802/media/videos/' + cls + '/high/' + str(self.videofile)
         super(VideoInfo, self).save(*args, **kwargs)
         if self.videofile:
-            if self.class_name == 1:
-                # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=360:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/low/' + str(self.videofile)[7:]])
+            if not self.is_encoded:
+                # self.update(is_encoded=True)
+                if self.class_name == 1:
+                    # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=360:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/low/' + str(self.videofile)[7:]])
 
-                var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=480:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/medium/' + str(self.videofile)[7:]])
+                    var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=480:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/medium/' + str(self.videofile)[7:]])
 
-                # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=720:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/high/' + str(self.videofile)[7:]])
-            else:
-                # var = subprocess.call(['ffmpeg', '-i', 'Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=360:-1', 'Users/mutalabshaykat/Documents/MM802/media/videos/Cold/low/' + str(self.videofile)[7:]])
+                    # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=720:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/high/' + str(self.videofile)[7:]])
+                else:
+                    # var = subprocess.call(['ffmpeg', '-i', 'Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=360:-1', 'Users/mutalabshaykat/Documents/MM802/media/videos/Cold/low/' + str(self.videofile)[7:]])
 
-                var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=480:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Cold/medium/' + str(self.videofile)[7:]])
+                    var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=480:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Cold/medium/' + str(self.videofile)[7:]])
 
-                # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=720:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Cold/high/' + str(self.videofile)[7:]])
+                    # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=720:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Cold/high/' + str(self.videofile)[7:]])
 
 
 # class HTML5Video(models.Model):
