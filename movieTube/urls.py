@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from movieTube import settings
+from movieTube import settings, views
 from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
+    path('', include('videos.urls')),
     path('videos/', include('videos.urls')),
     path('admin/', admin.site.urls),
+    path('signup/', views.signup, name="signup")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

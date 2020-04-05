@@ -1,5 +1,6 @@
-body{
+upload_datebody{
     background:#FFFFF !important;
+    font-family: 'Poppins', sans-serif;
 }
 
 a {
@@ -9,28 +10,28 @@ a {
 
 .sidenav {
   height: 100%;
-  width: 0;
+  width: 250px;
   position: fixed;
-  z-index: 1;
+  z-index:999;
   top: 0;
-  left: 0;
-  background-color: #E4F0E7;
+  left: -250px;
+  background-color: #07afc0;
   overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+  transition:all .3s ease-in-out;
+  padding-top:100px !important;
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 10px 20px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 18px;
+  color: #fff;
   display: block;
   transition: 0.3s;
 }
 
-.sidenav a:hover {
-  color: #f1f1f1;
+.sidenav .nav-list a:hover {
+  padding:10px 10px 10px 30px;
 }
 
 .sidenav .closebtn {
@@ -59,18 +60,19 @@ form.example input[type=text] {
   float: left;
   width: 80%;
   background: #f1f1f1;
+  height:40px;
 }
 
 /* Style the submit button */
 form.example button {
   float: left;
   width: 20%;
-  height: 47px;
+  height: 40px;
   padding: 10px;
-  background: #C1C9D6;
-  color: white;
+  background: #07afc0;
+  color: #fff;
   font-size: 17px;
-  border: 1px solid grey;
+  border: 1px solid #07afc0;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
 }
@@ -91,16 +93,19 @@ form.example::after {
 
 
 .header {
-  background-color: #E4F0E7;
-  padding: 30px;
-  text-align: right;
-  font-size: 40px;
-  color: 222447;;
-  font-family: 'Poppins', sans-serif;font-weight:700;
-  display: flex;
-   justify-content: space-between;
-   box-sizing:border-box;
-   padding:30px 50px;
+    background-color: #fff;
+    padding: 30px;
+    text-align: right;
+    font-size: 40px;
+    color: #222447;
+    font-family: 'Poppins', sans-serif;font-weight:700;
+    display: flex;
+    justify-content: space-between;
+    box-sizing:border-box;
+    padding:10px 50px;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow:0px 5px 21px #e8e8e8;
+    align-items:center;
 }
 
 .header-left {
@@ -236,4 +241,222 @@ form.example::after {
 #chartdiv_wheel{
     width: 100%;
     height: 100% !important;
+}
+
+.video-single-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding:50px 100px;
+}
+
+.video-play{
+    flex-basis:100%;
+}
+.video-box{
+    width: 100%;
+}
+.video-play .video-caption{
+    margin-top:20px;
+}
+.video-play .video-caption h2{
+    font-size:22px;
+}
+.video-box video{
+    width:100%;
+
+}
+
+.list-wrapper{
+    padding:0px 100px 100px;
+}
+.video-list{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    position:relative;
+}
+.video-list .single-video{
+    position:relative;
+}
+.video-list .single-video .overlay{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:transparent;
+    transition:all .3s linear;
+    opacity:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-list .single-video:hover .overlay{
+    opacity:1;
+}
+.video-list .single-video:hover .overlay img{
+    width:50px;
+}
+
+
+.dropbtn {
+  background-color: #07afc0;
+  color: white;
+  padding: 6px 25px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #0b7dda;
+}
+
+
+
+
+.header-right a{
+    color:#07afc0;
+}
+.header-right a:hover{
+    text-decoration:none;
+    color:#0b7dda;
+}
+.video-list .list{
+    width:23%;
+    margin:20px 10px;
+}
+.video-list .video-caption{
+    margin-top:0px;
+    border-bottom:1px solid #ddd;
+    padding-bottom:0px;
+    margin-bottom:15px;
+}
+.video-list .list video{
+    width:100%;
+    margin:10px 0;
+}
+.video-wrapper{
+    display: flex;
+    padding:50px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.video-block{
+    flex-basis: 22%;
+    margin: -20px 16px;
+
+}
+.video-block .video{
+    width: 100%;
+    height: 245px;
+    position:relative;
+    cursor:pointer
+}
+.video-block .video video{
+    width:100%;
+    height:100%;
+    border-radius: 50px;
+
+}
+.video-block .video .overlay{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:transparent;
+    transition:all .3s linear;
+    opacity:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-block .video:hover .overlay{
+    opacity:1;
+}
+.video-block .video:hover .overlay img{
+    width:50px;
+}
+.video-caption{
+    margin-top:-26px;
+    margin-bottom: 38px;
+    text-align:left
+}
+.video-caption h2{
+    font-size:16px;
+    font-weight:600;
+    color:#000;
+}
+.video-caption p{
+    font-size: 13px;
+    font-weight: normal;
+    color: #000;
+    opacity: 0.7;
+    margin-top: -2px;
+
+
+}
+
+.video-caption-index {
+    margin-top:-26px;
+    margin-bottom: 38px;
+    text-align:left
+}
+.video-caption-index  h2{
+    font-size:16px;
+    font-weight:600;
+    color:#000;
+}
+.video-caption-index  p{
+    font-size: 13px;
+    font-weight: normal;
+    color: #000;
+    opacity: 0.7;
+    margin-top: -2px;
+    display:inline-block;
+
+
+}
+
+.video-block a:hover{
+
+text-decoration:none;
+     cursor:pointer;
+}
+.main-body{
+    position:relative;
+    left:0;
+    transition:all .3s ease-in-out;
+
 }
