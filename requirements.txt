@@ -1,4 +1,0 @@
-psycopg2==2.8.4
-django==3.0.3
-pyodbc-dev==4.0.26
-wheel==0.34.2

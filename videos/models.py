@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
-from import_export import resources
 from django.core.validators import MaxValueValidator, MinValueValidator
 import subprocess
 import PIL

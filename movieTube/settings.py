@@ -167,5 +167,9 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 
 
-STATIC_URL = 'https://storage.googleapis.com/movietube-bucket/static/'
-MEDIA_URL = 'https://storage.googleapis.com/movietube-bucket/media/'
+# STATIC_URL = 'https://storage.googleapis.com/movietube-bucket/static/'
+# MEDIA_URL = 'https://storage.googleapis.com/movietube-bucket/media/'
+
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
