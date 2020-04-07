@@ -18,8 +18,10 @@ from django.urls import include, path
 from movieTube import settings, views
 from django.contrib.staticfiles.urls import static
 
+app_name = 'movieTube'
 urlpatterns = [
-    path('', include('videos.urls')),
+    # path('', include('videos.urls')),
+    path('', views.index, name='index'),
     path('videos/', include('videos.urls')),
     path('admin/', admin.site.urls),
     path('signup/', views.signup, name="signup")

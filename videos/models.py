@@ -61,7 +61,7 @@ class VideoInfo(models.Model):
     # TODO:
     #  In future we may want to allow for more control over publication
     is_public = models.BooleanField(default=False)
-    is_encoded = models.BooleanField('Is Encoded', default=False)
+    is_encoded = models.IntegerField('Is Encoded', null=True, default=0)
     modified_date = models.DateTimeField(auto_now=True)
     publish_date = models.DateTimeField(null=True, blank=True)
     view_count = models.IntegerField('View Count', null=True, default=0)
@@ -106,9 +106,10 @@ class VideoInfo(models.Model):
         self.low_quality_url = '/Users/mutalabshaykat/Documents/MM802/media/videos/' + cls + '/low/' + str(self.videofile)
         self.medium_quality_url = '/Users/mutalabshaykat/Documents/MM802/media/videos/' + cls + '/medium/' + str(self.videofile)
         self.high_quality_url = '/Users/mutalabshaykat/Documents/MM802/media/videos/' + cls + '/high/' + str(self.videofile)
+        self.is_encoded += 1
         super(VideoInfo, self).save(*args, **kwargs)
         if self.videofile:
-            if not self.is_encoded:
+            if self.is_encoded <= 0:
                 # self.update(is_encoded=True)
                 if self.class_name == 1:
                     # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=360:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Hot/low/' + str(self.videofile)[7:]])
@@ -122,42 +123,3 @@ class VideoInfo(models.Model):
                     var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=480:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Cold/medium/' + str(self.videofile)[7:]])
 
                     # var = subprocess.call(['ffmpeg', '-i', '/Users/mutalabshaykat/Documents/MM802/media/' + str(self.videofile), '-vf', 'scale=720:-1', '/Users/mutalabshaykat/Documents/MM802/media/videos/Cold/high/' + str(self.videofile)[7:]])
-
-
-# class HTML5Video(models.Model):
-#     OGG = 0
-#     WEBM = 1
-#     MP4 = 2
-#     FLASH = 3
-#     VIDEO_TYPE = (
-#         (OGG, 'video/ogg'),
-#         (WEBM, 'video/webm'),
-#         (MP4, 'video/mp4'),
-#         (FLASH, 'video/flv'),
-#     )
-#
-#     video_type = models.IntegerField(
-#         choices=VIDEO_TYPE,
-#         default=WEBM,
-#         help_text="The Video type"
-#     )
-#     video_file = models.FileField(
-#         upload_to="videos/html5/",
-#         help_text="The file you wish to upload. Make sure that it's the correct format.",
-#     )
-#
-#     # Allow for multiple video types for a single video
-#     # basic_video = models.ForeignKey(BasicVideo)
-#
-#     class Meta:
-#         verbose_name = "Html 5 Video"
-#         verbose_name_plural = "Html 5 Videos"
-#
-#
-# class EmbedVideo(VideoInfo):
-#     video_url = models.URLField(null=True, blank=True)
-#     video_code = models.TextField(
-#         null=True,
-#         blank=True,
-#         help_text="Use the video embed code instead of the url if your frontend does not support embedding with the URL only."
-#     )
