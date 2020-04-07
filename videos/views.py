@@ -42,6 +42,8 @@ def detail(request, pk):
 
     video = VideoInfo.objects.get(id=pk)
     video.view_count += 1
+    video.save()
+    video.view_count = round(video.view_count/2)
     video_list = VideoInfo.objects.filter(content_type=video.content_type).order_by('-publish_date')
     context = {
         context_object_name: video,

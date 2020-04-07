@@ -1,3 +1,5 @@
-psycopg2==2.8.4
 django==3.0.3
-pyodbc==4.0.26
+gunicorn==19.9.0
+celery==4.4.2
+psycopg2==2.8.4
+Pillow==7.0.0

@@ -25,8 +25,9 @@ SECRET_KEY = 'fzn&xspkf&^sn5_3d180=4zdk$#1_azt!777+2&)_m=_tul@c%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'www.localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'www.localhost', '0.0.0.0', '35.188.46.97']
 
 
 # Application definition
@@ -84,17 +85,37 @@ WSGI_APPLICATION = 'movieTube.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'moviedb',
-        # 'NAME': 'postgres',
-        'USER': 'mutalabshaykat',
-        'PASSWORD': '5423',
-        'HOST': 'localhost',
-        'PORT': '',
+
+if os.getenv('GAE_APPLICATION', None):
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': 'movietube:us-central1:movietubedb',
+            'USER': 'movietubeuser',
+            'PASSWORD': 'admin',
+            'NAME': 'movietubedb',
+        }
     }
-}
+else:
+    # Running locally so connect to either a local MySQL instance or connect to
+    # Cloud SQL via the proxy. To start the proxy via command line:
+    #
+    #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
+    #
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'moviedb',
+            # 'NAME': 'postgres',
+            'USER': 'mutalabshaykat',
+            'PASSWORD': '5423',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 
 # Password validation
@@ -144,6 +165,10 @@ CELERY_TIMEZONE = 'UTC'
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
+
+
+# STATIC_URL = 'https://storage.googleapis.com/movietube-bucket/static/'
+# MEDIA_URL = 'https://storage.googleapis.com/movietube-bucket/media/'
 
 
 STATIC_URL = '/static/'
